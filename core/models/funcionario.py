@@ -13,5 +13,9 @@ class Funcionario(models.Model):
         blank=True,
         default=None,
     )
+    class Meta:
+        verbose_name = 'Funcionário'
+        verbose_name_plural = 'Funcionários'
+
     def __str__(self):
         return self.nome
