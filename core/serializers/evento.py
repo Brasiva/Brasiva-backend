@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Evento, Endereco
+from core.models import Endereco, Evento
 
 
 class EventoSerializer(ModelSerializer):

@@ -13,6 +13,7 @@ class FuncionarioRetrieveSerializer(ModelSerializer):
         fields = '__all__'
         depth = 1
 
+
 class FuncionarioSerializer(ModelSerializer):
     foto_attachment_key = SlugRelatedField(
         source='foto',

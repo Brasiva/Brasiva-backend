@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Funcionario, Funcionario
+from core.models import Funcionario
 from core.serializers import FuncionarioSerializer
 
 

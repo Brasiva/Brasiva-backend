@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -14,7 +14,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import UserRegistrationView, UserViewSet, FuncionarioViewSet
+from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()

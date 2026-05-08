@@ -9,6 +9,6 @@ class Utensilio(models.Model):
     class Meta:
         verbose_name = 'Utensílio'
         verbose_name_plural = 'Utensílios'
-    
+
     def __str__(self):
         return self.nome

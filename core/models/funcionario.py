@@ -1,5 +1,7 @@
 from django.db import models
+
 from uploader.models import Image
+
 
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
@@ -13,6 +15,7 @@ class Funcionario(models.Model):
         blank=True,
         default=None,
     )
+
     class Meta:
         verbose_name = 'Funcionário'
         verbose_name_plural = 'Funcionários'
