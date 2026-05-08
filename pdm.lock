@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:0fdfb97e4d733316fd27a0114065eefc0beee2760256462b95bde0a55e24cf1c"
+content_hash = "sha256:764210aab75afcac05c5246a9a6ad9922e0b8c1d0cba7e587430d3d9677700a4"
 
 [[metadata.targets]]
 requires_python = ">=3.10"
@@ -363,6 +363,19 @@ dependencies = [
 files = [
     {file = "django-cloudinary-storage-0.3.0.tar.gz", hash = "sha256:debd403a5f225c9d35c4af508ff4abc7fdc262129464134b60b2feeb2c44d3e1"},
     {file = "django_cloudinary_storage-0.3.0-py3-none-any.whl", hash = "sha256:95c855c7334141b2a485ea7eb5716de87bb6ce0d848e205debb3a3ab7bbbd49a"},
+]
+
+[[package]]
+name = "django-colorfield"
+version = "0.14.0"
+summary = "color field for django models with a nice color-picker in the admin."
+groups = ["default"]
+dependencies = [
+    "Pillow>=9.0.0",
+]
+files = [
+    {file = "django_colorfield-0.14.0-py3-none-any.whl", hash = "sha256:f169c4e7ad8f336e51d4ea81f866346e7d4f336f3766e54e144cd16ea7d84a0e"},
+    {file = "django_colorfield-0.14.0.tar.gz", hash = "sha256:478dbd3975a88f2ea2a9afc325faaca05c54ebf04ec985ce130f6dea39dfb899"},
 ]
 
 [[package]]
