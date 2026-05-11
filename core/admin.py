@@ -53,7 +53,6 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(models.Evento)
 admin.site.register(models.Endereco)
-admin.site.register(models.EquipeEvento)
 admin.site.register(models.Funcionario)
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Utensilio)
