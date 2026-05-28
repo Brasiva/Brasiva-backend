@@ -1,5 +1,15 @@
 from .user import User
+from .categoria_ingrediente import CategoriaIngrediente
+from .cliente import Cliente
+from .estoque import Estoque
 from .funcionario import Funcionario
-from .utensilio import Utensilio          
+from .utensilio import Utensilio
+from .utensilio_evento import UtensilioEvento          
 from .tipo_evento import TipoEvento
 from .evento import Endereco, Evento
+from .prato import Prato
+from .categoria_prato import CategoriaPrato
+from .ingrediente import Ingrediente
+from .item_compra import ItemCompra
+from .equipe_evento import EquipeEvento
+from .orcamento_evento import OrcamentoEvento

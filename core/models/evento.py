@@ -20,6 +20,8 @@ class Endereco(models.Model):
 
 class Evento(models.Model):
     quantidade_pessoas = models.PositiveIntegerField(blank=False, null=False)
+    data_hora = models.DateTimeField()
+    taxa_utensilio = models.DecimalField(max_digits=10, decimal_places=2)
     endereco = models.ForeignKey(
         'Endereco',
         related_name='eventos',
@@ -28,8 +30,30 @@ class Evento(models.Model):
         blank=False,
         default=None,
     )
-    data_hora = models.DateTimeField()
-    taxa_utensilio = models.DecimalField(max_digits=10, decimal_places=2)
+    tipo_evento = models.ForeignKey(
+        'TipoEvento',
+        related_name='eventos',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        default=None,
+    )
+    equipe_evento = models.ForeignKey(
+        'EquipeEvento',
+        related_name='eventos',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        default=None,
+    )
+    prato_evento = models.ForeignKey(
+        'Prato',
+        related_name='eventos',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        default=None,
+    )
 
     class Meta:
         verbose_name = 'Evento'

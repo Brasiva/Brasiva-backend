@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.locale import ro
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -14,13 +15,27 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet
+from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, ClienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
 
 router.register(r'usuarios', UserViewSet, basename='usuarios')
+router.register(r'categoria-pratos', CategoriaPratoViewSet, basename='categoria-pratos')
+router.register(r'categoria-ingredientes', CategoriaIngredienteViewSet, basename='categoria-ingredientes')
+router.register(r'clientes', ClienteViewSet, basename='clientes')
 router.register(r'funcionarios', FuncionarioViewSet, basename='funcionarios')
+router.register(r'utensilios', UtensilioViewSet, basename='utensilios')
+router.register(r'tipo-eventos', TipoEventoViewSet, basename='tipo-eventos')
+router.register(r'pratos', PratoViewSet, basename='pratos')
+router.register(r'eventos', EventoViewSet, basename='eventos')
+router.register(r'enderecos', EnderecoViewSet, basename='enderecos')
+router.register(r'estoque', EstoqueViewSet, basename='estoque')
+router.register(r'ingredientes', IngredienteViewSet, basename='ingredientes')
+router.register(r'item-compra', ItemCompraViewSet, basename='item-compra')
+router.register(r'orcamento-eventos', OrcamentoEventoViewSet, basename='orcamento-eventos')
+router.register(r'equipe-eventos', EquipeEventoViewSet, basename='equipe-eventos')
+router.register(r'utensilio-eventos', UtensilioEventoViewSet, basename='utensilio-eventos')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
