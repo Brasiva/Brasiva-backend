@@ -1,5 +1,4 @@
 from .categoria_ingrediente import CategoriaIngredienteViewSet
-from .cliente import ClienteViewSet
 from .user import UserRegistrationView, UserViewSet
 from .funcionario import FuncionarioViewSet
 from .evento import EventoViewSet, EnderecoViewSet

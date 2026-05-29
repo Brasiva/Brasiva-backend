@@ -1,6 +1,5 @@
 from .user import User
 from .categoria_ingrediente import CategoriaIngrediente
-from .cliente import Cliente
 from .estoque import Estoque
 from .funcionario import Funcionario
 from .utensilio import Utensilio

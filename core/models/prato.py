@@ -10,7 +10,7 @@ class Prato(models.Model):
     )
     ingredientes = models.ManyToManyField(
         'Ingrediente',
-        
+        through='IngredientePrato'
     )
 
     class Meta:

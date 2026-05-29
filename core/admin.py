@@ -53,7 +53,6 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(models.CategoriaPrato)
 admin.site.register(models.CategoriaIngrediente)
-admin.site.register(models.Cliente)
 admin.site.register(models.Evento)
 admin.site.register(models.Estoque)
 admin.site.register(models.Endereco)

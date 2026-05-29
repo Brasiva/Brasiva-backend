@@ -1,5 +1,4 @@
 from. categoria_ingrediente import CategoriaIngredienteSerializer
-from .cliente import ClienteSerializer
 from .user import UserRegistrationSerializer, UserSerializer
 from .funcionario import FuncionarioSerializer
 from .estoque import EstoqueSerializer

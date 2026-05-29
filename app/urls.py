@@ -15,7 +15,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, ClienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet
+from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
@@ -23,7 +23,6 @@ router = DefaultRouter()
 router.register(r'usuarios', UserViewSet, basename='usuarios')
 router.register(r'categoria-pratos', CategoriaPratoViewSet, basename='categoria-pratos')
 router.register(r'categoria-ingredientes', CategoriaIngredienteViewSet, basename='categoria-ingredientes')
-router.register(r'clientes', ClienteViewSet, basename='clientes')
 router.register(r'funcionarios', FuncionarioViewSet, basename='funcionarios')
 router.register(r'utensilios', UtensilioViewSet, basename='utensilios')
 router.register(r'tipo-eventos', TipoEventoViewSet, basename='tipo-eventos')
