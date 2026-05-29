@@ -8,7 +8,7 @@ from .utensilio import UtensilioViewSet
 from .tipo_evento import TipoEventoViewSet
 from .prato import PratoViewSet
 from .categoria_prato import CategoriaPratoViewSet
-from .ingrediente_estoque import IngredienteEstoqueViewSet
+from .ingrediente import IngredienteViewSet
 from .item_compra import ItemCompraViewSet
 from .equipe_evento import EquipeEventoViewSet
 from .orcamento_evento import OrcamentoEventoViewSet
