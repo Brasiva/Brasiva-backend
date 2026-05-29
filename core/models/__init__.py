@@ -13,3 +13,4 @@ from .ingrediente import Ingrediente
 from .item_compra import ItemCompra
 from .equipe_evento import EquipeEvento
 from .orcamento_evento import OrcamentoEvento
+from .ingrediente_prato import IngredientePrato

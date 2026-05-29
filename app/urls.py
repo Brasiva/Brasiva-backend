@@ -15,7 +15,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, ClienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet
+from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, ClienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
@@ -36,6 +36,7 @@ router.register(r'item-compra', ItemCompraViewSet, basename='item-compra')
 router.register(r'orcamento-eventos', OrcamentoEventoViewSet, basename='orcamento-eventos')
 router.register(r'equipe-eventos', EquipeEventoViewSet, basename='equipe-eventos')
 router.register(r'utensilio-eventos', UtensilioEventoViewSet, basename='utensilio-eventos')
+router.register(r'ingrediente-pratos', IngredientePratoViewSet, basename='ingrediente-pratos')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

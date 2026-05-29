@@ -13,3 +13,4 @@ from .item_compra import ItemCompraViewSet
 from .equipe_evento import EquipeEventoViewSet
 from .orcamento_evento import OrcamentoEventoViewSet
 from .utensilio_evento import UtensilioEventoViewSet
+from .ingrediente_prato import IngredientePratoViewSet
