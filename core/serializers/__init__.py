@@ -13,3 +13,4 @@ from .equipe_evento import EquipeEventoSerializer
 from .orcamento_evento import OrcamentoEventoSerializer
 from .utensilio_evento import UtensilioEventoSerializer
 from .ingrediente_prato import IngredientePratoSerializer
+from .prato_evento import PratoEventoSerializer
