@@ -8,7 +8,7 @@ from .utensilio import UtensilioSerializer
 from .tipo_evento import TipoEventoSerializer
 from .prato import PratoSerializer
 from .categoria_prato import CategoriaPratoSerializer
-from .ingrediente import IngredienteSerializer
+from .ingrediente_estoque import IngredienteEstoqueSerializer
 from .item_compra import ItemCompraSerializer
 from .equipe_evento import EquipeEventoSerializer
 from .orcamento_evento import OrcamentoEventoSerializer
