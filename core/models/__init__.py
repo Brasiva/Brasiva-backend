@@ -5,7 +5,8 @@ from .funcionario import Funcionario
 from .utensilio import Utensilio
 from .utensilio_evento import UtensilioEvento          
 from .tipo_evento import TipoEvento
-from .evento import Endereco, Evento
+from .evento import Evento
+from .endereco import Endereco
 from .prato import Prato
 from .categoria_prato import CategoriaPrato
 from .ingrediente import Ingrediente
