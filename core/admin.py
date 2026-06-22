@@ -50,21 +50,38 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
+from core.models import CategoriaPrato, CategoriaIngrediente, Evento, Estoque, Endereco, Funcionario, User, UserAdmin, Utensilio, TipoEvento, Prato, Ingrediente, ItemCompra, EquipeEvento, OrcamentoEvento, UtensilioEvento, IngredientePrato, PratoEvento
 
-admin.site.register(models.CategoriaPrato)
-admin.site.register(models.CategoriaIngrediente)
-admin.site.register(models.Evento)
-admin.site.register(models.Estoque)
-admin.site.register(models.Endereco)
-admin.site.register(models.Funcionario)
-admin.site.register(models.User, UserAdmin)
-admin.site.register(models.Utensilio)
-admin.site.register(models.TipoEvento)
-admin.site.register(models.Prato)
-admin.site.register(models.Ingrediente)
-admin.site.register(models.ItemCompra)
-admin.site.register(models.EquipeEvento)
-admin.site.register(models.OrcamentoEvento)
-admin.site.register(models.UtensilioEvento)
-admin.site.register(models.IngredientePrato)
-admin.site.register(models.PratoEvento)
+@register(CategoriaPrato)
+class CategoriaPratoAdmin(ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+    list_filter = ('nome',)
+    ordering = ('nome',)
+    list_per_page = 10
+
+@register(CategoriaIngrediente)
+class CategoriaIngredienteAdmin(ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+    list_filter = ('nome',)
+    ordering = ('nome',)
+    list_per_page = 10
+
+@register(Evento)
+class EventoAdmin(ModelAdmin):
+   # Exibe os dados reais que existem na tabela Evento
+    list_display = ('id', 'data_hora', 'quantidade_pessoas', 'endereco')
+    # Permite buscar pela cidade ou logradouro através da chave estrangeira (usando __)
+    search_fields = ('endereco__cidade', 'endereco__logradouro')
+    list_filter = ('data_hora', 'endereco__cidade')
+    ordering = ('-data_hora',) # O sinal de menos (-) faz ordenar do mais recente para o mais antigo
+    list_per_page = 10
+
+@register(Endereco)
+class EnderecoAdmin(ModelAdmin):
+    list_display = ('logradouro', 'numero', 'bairro', 'cidade', 'estado')
+    search_fields = ('logradouro', 'bairro', 'cidade')
+    list_filter = ('cidade', 'estado')
+    ordering = ('cidade', 'logradouro')
+    list_per_page = 20

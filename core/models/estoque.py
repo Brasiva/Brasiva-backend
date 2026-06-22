@@ -2,8 +2,9 @@ from django.db import models
 
 
 class Estoque(models.Model):
+    nome = models.CharField(max_length=100)
     quantidade = models.PositiveIntegerField(blank=False, null=False)
-    und = models.CharField(max_length=20)
+    und_medida = models.CharField(max_length=20)
 
     class Meta:
         verbose_name = 'Estoque'
