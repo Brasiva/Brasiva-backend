@@ -2,38 +2,29 @@
 Django admin customization.
 """
 
-from codecs import register
-
-from django.contrib import admin 
-from django.contrib.admin import register, ModelAdmin
+from django.contrib.admin import ModelAdmin, register
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from astroid.raw_building import register_arguments
-from core import models
-from django.contrib.admin.options import ModelAdmin
-
-
 from core.models import (
-    CategoriaPrato,
     CategoriaIngrediente,
-    Evento,
+    CategoriaPrato,
+    Endereco,
+    EquipeEvento,
     Estoque,
-    Endereco, 
-    Funcionario, 
-    User, 
-    #UserAdmin, 
-    Utensilio, 
-    TipoEvento, 
-    Prato, 
-    Ingrediente, 
-    ItemCompra, 
-    EquipeEvento, 
-    #OrcamentoEvento, 
-    UtensilioEvento, 
-    IngredientePrato, 
-    PratoEvento
+    Evento,
+    Funcionario,
+    Ingrediente,
+    IngredientePrato,
+    ItemCompra,
+    Prato,
+    PratoEvento,
+    TipoEvento,
+    User,
+    Utensilio,
+    UtensilioEvento,
 )
+
 
 @register(User)
 class UserAdmin(BaseUserAdmin):
