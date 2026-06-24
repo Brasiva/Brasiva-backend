@@ -9,10 +9,33 @@ from django.contrib.admin import register, ModelAdmin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
+from astroid.raw_building import register_arguments
 from core import models
 from django.contrib.admin.options import ModelAdmin
 
 
+from core.models import (
+    CategoriaPrato,
+    CategoriaIngrediente,
+    Evento,
+    Estoque,
+    Endereco, 
+    Funcionario, 
+    User, 
+    #UserAdmin, 
+    Utensilio, 
+    TipoEvento, 
+    Prato, 
+    Ingrediente, 
+    ItemCompra, 
+    EquipeEvento, 
+    #OrcamentoEvento, 
+    UtensilioEvento, 
+    IngredientePrato, 
+    PratoEvento
+)
+
+@register(User)
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
 
@@ -53,28 +76,6 @@ class UserAdmin(BaseUserAdmin):
             },
         ),
     )
-
-from core.models import (
-    CategoriaPrato,
-    CategoriaPrato,
-    CategoriaIngrediente,
-    Evento,
-    Estoque,
-    Endereco, 
-    Funcionario, 
-    #User, 
-    #UserAdmin, 
-    Utensilio, 
-    TipoEvento, 
-    Prato, 
-    Ingrediente, 
-    ItemCompra, 
-    EquipeEvento, 
-    #OrcamentoEvento, 
-    UtensilioEvento, 
-    IngredientePrato, 
-    PratoEvento
-)
 
 @register(CategoriaPrato)
 class CategoriaPratoAdmin(ModelAdmin):
