@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Evento
+from core.models import Endereco
 
 
-class EventoSerializer(ModelSerializer):
+class EnderecoSerializer(ModelSerializer):
     class Meta:
-        model = Evento
+        model = Endereco
         fields = '__all__'

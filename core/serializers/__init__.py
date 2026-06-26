@@ -2,7 +2,8 @@ from. categoria_ingrediente import CategoriaIngredienteSerializer
 from .user import UserRegistrationSerializer, UserSerializer
 from .funcionario import FuncionarioSerializer
 from .estoque import EstoqueSerializer
-from .evento import EventoSerializer, EnderecoSerializer
+from .evento import EventoSerializer
+from .endereco import EnderecoSerializer
 from .utensilio import UtensilioSerializer
 from .tipo_evento import TipoEventoSerializer
 from .prato import PratoSerializer
@@ -14,3 +15,4 @@ from .orcamento_evento import OrcamentoEventoSerializer
 from .utensilio_evento import UtensilioEventoSerializer
 from .ingrediente_prato import IngredientePratoSerializer
 from .prato_evento import PratoEventoSerializer
+from .cliente import ClienteSerializer

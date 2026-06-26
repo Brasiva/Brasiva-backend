@@ -1,7 +1,7 @@
 from .categoria_ingrediente import CategoriaIngredienteViewSet
 from .user import UserRegistrationView, UserViewSet
 from .funcionario import FuncionarioViewSet
-from .evento import EventoViewSet, EnderecoViewSet
+from .evento import EventoViewSet
 from .estoque import EstoqueViewSet
 from .utensilio import UtensilioViewSet
 from .tipo_evento import TipoEventoViewSet
@@ -14,3 +14,5 @@ from .orcamento_evento import OrcamentoEventoViewSet
 from .utensilio_evento import UtensilioEventoViewSet
 from .ingrediente_prato import IngredientePratoViewSet
 from .prato_evento import PratoEventoViewSet
+from .cliente import ClienteViewSet
+from .endereco import EnderecoViewSet

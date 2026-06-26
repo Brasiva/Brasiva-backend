@@ -1,13 +1,9 @@
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Evento, Endereco
-from core.serializers import EventoSerializer, EnderecoSerializer
+from core.models import Evento
+from core.serializers import EventoSerializer
 
 
 class EventoViewSet(ModelViewSet):
     queryset = Evento.objects.all()
     serializer_class = EventoSerializer
-
-class EnderecoViewSet(ModelViewSet):
-    queryset = Endereco.objects.all()
-    serializer_class = EnderecoSerializer
