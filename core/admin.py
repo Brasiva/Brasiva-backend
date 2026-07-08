@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from core.models import (
     CategoriaIngrediente,
     CategoriaPrato,
+    Cliente,
     Endereco,
     EquipeEvento,
     Estoque,
@@ -192,3 +193,10 @@ class PratoEventoAdmin(ModelAdmin):
 #@register(OrcamentoEvento)
 #class OrcamentoEventoAdmin(ModelAdmin):
 # pass
+
+@register(Cliente)
+class ClienteAdmin(ModelAdmin):
+    list_display = ('nome', 'email', 'telefone')
+    search_fields = ('nome', 'email', 'telefone')
+    ordering = ('nome',)
+    list_per_page = 20

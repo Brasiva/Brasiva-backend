@@ -3,8 +3,8 @@ from django.db import models
 
 class Ingrediente(models.Model):
     nome = models.CharField(max_length=45)
-    valor = models.DecimalField(max_digits=10, decimal_places=2)
-    quantidade = models.PositiveIntegerField(blank=False, null=False)
+    valor = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    quantidade = models.PositiveIntegerField(blank=True, null=True)
 
 
     class Meta:

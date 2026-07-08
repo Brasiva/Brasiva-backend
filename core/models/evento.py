@@ -3,6 +3,7 @@ from .endereco import Endereco
 
 
 class Evento(models.Model):
+    cliente = models.ForeignKey('Cliente', related_name='eventos', on_delete=models.SET_NULL, null=True, blank=False)
     quantidade_pessoas = models.PositiveIntegerField(blank=False, null=False)
     data_hora = models.DateTimeField()
     taxa_utensilio = models.DecimalField(max_digits=10, decimal_places=2)
