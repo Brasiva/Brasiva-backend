@@ -113,7 +113,7 @@ class EnderecoAdmin(ModelAdmin):
 @register(Estoque)
 class EstoqueAdmin(ModelAdmin):
     # Exibe o nome, a quantidade atual e a unidade de medida em colunas separadas
-    list_display = ('nome', 'quantidade', 'und_medida')
+    list_display = ('nome', 'und_medida')
     # Permite pesquisar os itens pelo nome
     search_fields = ('nome',)
     # Cria um filtro lateral para separar por unidade de medida (ex: ver só o que é KG)
@@ -184,7 +184,7 @@ class UtensilioEventoAdmin(ModelAdmin):
 
 @register(IngredientePrato)
 class IngredientePratoAdmin(ModelAdmin):
-    list_display = ('prato', 'ingrediente', 'quantidade')
+    list_display = ('prato', 'ingrediente')
     search_fields = ('prato__nome', 'ingrediente__nome')
     list_filter = ('prato', 'ingrediente')
     ordering = ('prato__nome',)
