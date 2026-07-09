@@ -13,6 +13,6 @@ from .equipe_evento import EquipeEventoViewSet
 from .orcamento_evento import OrcamentoEventoViewSet
 from .utensilio_evento import UtensilioEventoViewSet
 from .ingrediente_prato import IngredientePratoViewSet
-from .cardapio import CardapioViewSet
+from .prato_evento import PratoEventoViewSet
 from .cliente import ClienteViewSet
 from .endereco import EnderecoViewSet

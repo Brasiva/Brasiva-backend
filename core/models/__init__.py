@@ -14,5 +14,5 @@ from .item_compra import ItemCompra
 from .equipe_evento import EquipeEvento
 from .orcamento_evento import OrcamentoEvento
 from .ingrediente_prato import IngredientePrato
-from .cardapio import Cardapio
+from .prato_evento import PratoEvento
 from .cliente import Cliente
