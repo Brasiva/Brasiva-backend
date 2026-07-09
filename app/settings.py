@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'uploader',
     'core',
     'colorfield',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
