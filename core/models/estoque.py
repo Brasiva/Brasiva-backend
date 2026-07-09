@@ -4,7 +4,6 @@ from django.db import models
 class Estoque(models.Model):
     # Usar unique=True evita cadastrar "Arroz" duas vezes em linhas separadas
     nome = models.CharField(max_length=100, unique=True, verbose_name="Nome do Item")
-    quantidade = models.PositiveIntegerField(blank=False, null=False, verbose_name="Quantidade")
     # Dica: 'KG', 'Unidade', 'Litros', etc.
     und_medida = models.CharField(max_length=20, verbose_name="Unidade de Medida")
 

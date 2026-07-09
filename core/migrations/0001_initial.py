@@ -251,25 +251,6 @@ class Migration(migrations.Migration):
             name='prato',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.prato'),
         ),
-        migrations.CreateModel(
-            name='PratoEvento',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantidade', models.IntegerField()),
-                ('evento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pratos_vinculados', to='core.evento')),
-                ('prato', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='eventos_vinculados', to='core.prato')),
-            ],
-            options={
-                'verbose_name': 'Prato do Evento',
-                'verbose_name_plural': 'Pratos do Evento',
-                'unique_together': {('evento', 'prato')},
-            },
-        ),
-        migrations.AddField(
-            model_name='evento',
-            name='prato_evento',
-            field=models.ManyToManyField(related_name='eventos', through='core.PratoEvento', to='core.prato'),
-        ),
         migrations.AddField(
             model_name='evento',
             name='tipo_evento',

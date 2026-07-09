@@ -7,6 +7,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from core.models import (
+    Cardapio,
     CategoriaIngrediente,
     CategoriaPrato,
     Cliente,
@@ -19,7 +20,6 @@ from core.models import (
     IngredientePrato,
     ItemCompra,
     Prato,
-    PratoEvento,
     TipoEvento,
     User,
     Utensilio,
@@ -68,6 +68,13 @@ class UserAdmin(BaseUserAdmin):
             },
         ),
     )
+
+@register(Cardapio)
+class CardapioAdmin(ModelAdmin):
+    list_display = ('id', 'nome',)
+    search_fields = ('nome',)
+    ordering = ('nome',)
+    list_per_page = 10
 
 @register(CategoriaPrato)
 class CategoriaPratoAdmin(ModelAdmin):
@@ -181,13 +188,6 @@ class IngredientePratoAdmin(ModelAdmin):
     search_fields = ('prato__nome', 'ingrediente__nome')
     list_filter = ('prato', 'ingrediente')
     ordering = ('prato__nome',)
-    list_per_page = 20
-
-@register(PratoEvento)
-class PratoEventoAdmin(ModelAdmin):
-    list_display = ('evento', 'prato', 'quantidade')
-    search_fields = ('evento__id', 'prato__nome')
-    list_filter = ('evento', 'prato')
     list_per_page = 20
 
 #@register(OrcamentoEvento)
