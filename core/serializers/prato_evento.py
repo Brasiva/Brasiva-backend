@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from core.models import PratoEvento
+from core.models import Cardapio
 
 
-class PratoEventoSerializer(ModelSerializer):
+class CardapioSerializer(ModelSerializer):
     class Meta:
-        model = PratoEvento
+        model = Cardapio
         fields = '__all__'

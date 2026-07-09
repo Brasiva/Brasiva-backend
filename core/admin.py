@@ -19,7 +19,7 @@ from core.models import (
     IngredientePrato,
     ItemCompra,
     Prato,
-    PratoEvento,
+    Cardapio,
     TipoEvento,
     User,
     Utensilio,
@@ -183,8 +183,8 @@ class IngredientePratoAdmin(ModelAdmin):
     ordering = ('prato__nome',)
     list_per_page = 20
 
-@register(PratoEvento)
-class PratoEventoAdmin(ModelAdmin):
+@register(Cardapio)
+class CardapioAdmin(ModelAdmin):
     list_display = ('evento', 'prato', 'quantidade')
     search_fields = ('evento__id', 'prato__nome')
     list_filter = ('evento', 'prato')

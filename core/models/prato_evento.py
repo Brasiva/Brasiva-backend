@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class PratoEvento(models.Model):
+class Cardapio(models.Model):
     evento = models.ForeignKey('Evento', on_delete=models.CASCADE, related_name='pratos_vinculados')
     prato = models.ForeignKey('Prato', on_delete=models.CASCADE, related_name='eventos_vinculados')
     quantidade = models.IntegerField() # Esse campo veio direto do seu diagrama!

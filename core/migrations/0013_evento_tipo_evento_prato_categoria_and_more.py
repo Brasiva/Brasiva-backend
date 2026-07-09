@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='PratoEvento',
+            name='Cardapio',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantidade', models.IntegerField()),
@@ -92,8 +92,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='evento',
-            name='prato_evento',
-            field=models.ManyToManyField(related_name='eventos', through='core.PratoEvento', to='core.prato'),
+            name='cardapio',
+            field=models.ManyToManyField(related_name='eventos', through='core.Cardapio', to='core.prato'),
         ),
         migrations.CreateModel(
             name='UtensilioEvento',

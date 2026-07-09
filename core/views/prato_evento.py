@@ -1,9 +1,9 @@
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import PratoEvento
-from core.serializers import PratoEventoSerializer
+from core.models import Cardapio
+from core.serializers import CardapioSerializer
 
 
-class PratoEventoViewSet(ModelViewSet):
-    queryset = PratoEvento.objects.all()
-    serializer_class = PratoEventoSerializer
+class CardapioViewSet(ModelViewSet):
+    queryset = Cardapio.objects.all()
+    serializer_class = CardapioSerializer

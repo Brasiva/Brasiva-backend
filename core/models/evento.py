@@ -11,7 +11,7 @@ class Evento(models.Model):
     tipo_evento = models.ForeignKey('TipoEvento', related_name='eventos', on_delete=models.SET_NULL, null=True, blank=False)
     equipe_evento = models.ManyToManyField('Funcionario', through='EquipeEvento', related_name='eventos')
     utensilio_evento = models.ManyToManyField('Utensilio', through='UtensilioEvento', related_name='eventos')
-    prato_evento = models.ManyToManyField('Prato', through='PratoEvento', related_name='eventos')
+    cardapio = models.ManyToManyField('Prato', through='Cardapio', related_name='eventos')
 
     class Meta:
         verbose_name = 'Evento'
