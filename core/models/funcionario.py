@@ -7,7 +7,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
-    telefone = PhoneNumberField(region='BR', blank=False)
+    telefone = models.CharField(
+    max_length=20,
+    blank=True,
+    null=True
+)
     pagamento = models.DecimalField(max_digits=10, decimal_places=2)
     foto = models.ForeignKey(
         Image,
