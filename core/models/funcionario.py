@@ -8,7 +8,7 @@ class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
     cargo = models.CharField(max_length=100)
     telefone = PhoneNumberField(region='BR', blank=False)
-    pagamento = models.DecimalField(max_digits=10, decimal_places=2)
+    pagamento = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     foto = models.ForeignKey(
         Image,
         related_name='+',

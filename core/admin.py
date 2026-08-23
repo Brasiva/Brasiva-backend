@@ -7,10 +7,13 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from core.models import (
-    Cardapio,
     CategoriaIngrediente,
     CategoriaPrato,
+    CardapioEvento,
+    Convite,
+    Compra,
     Cliente,
+    ClienteEvento,
     Endereco,
     EquipeEvento,
     Estoque,
@@ -24,6 +27,7 @@ from core.models import (
     User,
     Utensilio,
     UtensilioEvento,
+    OrcamentoEvento,
 )
 
 
@@ -69,11 +73,12 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
-@register(Cardapio)
-class CardapioAdmin(ModelAdmin):
-    list_display = ('id', 'nome',)
-    search_fields = ('nome',)
-    ordering = ('nome',)
+
+@register(CardapioEvento)
+class CardapioEventoAdmin(ModelAdmin):
+    list_display = ('id', 'evento', 'prato')
+    search_fields = ('prato__nome',)
+    list_filter = ('evento',)
     list_per_page = 10
 
 @register(CategoriaPrato)
@@ -92,6 +97,35 @@ class CategoriaIngredienteAdmin(ModelAdmin):
     ordering = ('nome',)
     list_per_page = 10
 
+@register(Convite)
+class ConviteAdmin(ModelAdmin):
+    list_display = ('funcionario', 'grupo', 'usado', 'expira_em', 'criado_por')
+    search_fields = ('funcionario__nome',)
+    list_filter = ('usado', 'grupo')
+    ordering = ('-criado_em',)
+    list_per_page = 20
+
+@register(Compra)
+class CompraAdmin(ModelAdmin):
+    list_display = ('id', 'data_compra', 'valor')
+    ordering = ('-data_compra',)
+    list_per_page = 20
+
+@register(ClienteEvento)
+class ClienteEventoAdmin(ModelAdmin):
+    list_display = ('cliente', 'evento')
+    search_fields = ('cliente__nome', 'evento__id')
+    list_filter = ('evento',)
+    list_per_page = 20
+
+@register(Endereco)
+class EnderecoAdmin(ModelAdmin):
+    list_display = ('logradouro', 'numero', 'cidade', 'estado')
+    search_fields = ('logradouro', 'cidade', 'bairro')
+    list_filter = ('cidade', 'estado')
+    ordering = ('cidade',)
+    list_per_page = 20
+
 @register(Evento)
 class EventoAdmin(ModelAdmin):
    # Exibe os dados reais que existem na tabela Evento
@@ -102,24 +136,14 @@ class EventoAdmin(ModelAdmin):
     ordering = ('-data_hora',) # O sinal de menos (-) faz ordenar do mais recente para o mais antigo
     list_per_page = 10
 
-@register(Endereco)
-class EnderecoAdmin(ModelAdmin):
-    list_display = ('logradouro', 'numero', 'bairro', 'cidade', 'estado')
-    search_fields = ('logradouro', 'bairro', 'cidade')
-    list_filter = ('cidade', 'estado')
-    ordering = ('cidade', 'logradouro')
-    list_per_page = 20
-
 @register(Estoque)
 class EstoqueAdmin(ModelAdmin):
-    # Exibe o nome, a quantidade atual e a unidade de medida em colunas separadas
-    list_display = ('nome', 'und_medida')
-    # Permite pesquisar os itens pelo nome
-    search_fields = ('nome',)
+    # Exibe o id, a quantidade atual e a unidade de medida em colunas separadas
+    list_display = ('id', 'quantidade', 'und_medida')
     # Cria um filtro lateral para separar por unidade de medida (ex: ver só o que é KG)
     list_filter = ('und_medida',)
-    # Ordena os itens em ordem alfabética pelo nome
-    ordering = ('nome',)
+    # Ordena os itens em ordem alfabética pelo id
+    ordering = ('id',)
     # Mostra 20 itens por página
     list_per_page = 20
 
@@ -156,16 +180,17 @@ class PratoAdmin(ModelAdmin):
 
 @register(Ingrediente)
 class IngredienteAdmin(ModelAdmin):
-    list_display = ('nome', 'valor', 'quantidade')
+    list_display = ('nome', 'categoria_ingrediente', 'estoque')
     search_fields = ('nome',)
-    ordering = ('-valor',)
+    list_filter = ('categoria_ingrediente',)
+    ordering = ('nome',)
     list_per_page = 20
 
 @register(ItemCompra)
 class ItemCompraAdmin(ModelAdmin):
-    list_display = ('nome', 'quantidade', 'valor')
-    search_fields = ('nome',)
-    ordering = ('nome',)
+    list_display = ('id', 'compra', 'ingrediente', 'nome', 'quantidade')
+    search_fields = ('nome', 'ingrediente__nome')
+    list_filter = ('compra',)
     list_per_page = 20
 
 @register(EquipeEvento)
@@ -190,9 +215,11 @@ class IngredientePratoAdmin(ModelAdmin):
     ordering = ('prato__nome',)
     list_per_page = 20
 
-#@register(OrcamentoEvento)
-#class OrcamentoEventoAdmin(ModelAdmin):
-# pass
+@register(OrcamentoEvento)
+class OrcamentoEventoAdmin(ModelAdmin):
+    list_display = ('evento', 'mao_de_obra', 'valor_total')
+    search_fields = ('evento__id',)
+    list_per_page = 20
 
 @register(Cliente)
 class ClienteAdmin(ModelAdmin):

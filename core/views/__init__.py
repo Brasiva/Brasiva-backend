@@ -15,4 +15,8 @@ from .utensilio_evento import UtensilioEventoViewSet
 from .ingrediente_prato import IngredientePratoViewSet
 from .cliente import ClienteViewSet
 from .endereco import EnderecoViewSet
-from .cardapio import CardapioViewSet
+from .cardapio_evento import CardapioEventoViewSet
+from .compra import CompraViewSet
+from .convite import ConviteViewSet
+from .cliente_evento import ClienteEventoViewSet
+from .endereco import EnderecoViewSet

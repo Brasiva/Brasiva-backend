@@ -6,7 +6,8 @@ class Prato(models.Model):
     valor = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     categoria = models.ForeignKey(
         'CategoriaPrato',
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT,
+        related_name='pratos',
     )
     ingredientes = models.ManyToManyField(
         'Ingrediente',

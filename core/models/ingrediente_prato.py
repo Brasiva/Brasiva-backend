@@ -4,6 +4,7 @@ from django.db import models
 class IngredientePrato(models.Model):
     ingrediente = models.ForeignKey('Ingrediente', on_delete=models.CASCADE)
     prato = models.ForeignKey('Prato', on_delete=models.CASCADE)
+    quantidade = models.DecimalField(max_digits=10, decimal_places=3)
 
     class Meta:
         unique_together = ('prato', 'ingrediente')

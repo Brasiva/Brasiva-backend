@@ -3,9 +3,21 @@ from django.db import models
 
 class Ingrediente(models.Model):
     nome = models.CharField(max_length=45)
-    valor = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    quantidade = models.PositiveIntegerField(blank=True, null=True)
-
+    und_med = models.CharField(max_length=45, blank=True, null=True)
+    categoria_ingrediente = models.ForeignKey(
+        'CategoriaIngrediente',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='ingredientes',
+    )
+    estoque = models.OneToOneField(
+        'Estoque',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='ingrediente',
+    )
 
     class Meta:
         verbose_name = 'Ingrediente'

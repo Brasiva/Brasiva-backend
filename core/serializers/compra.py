@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Cardapio
+from core.models import Compra
 
 
-class CardapioSerializer(ModelSerializer):
+class CompraSerializer(ModelSerializer):
     class Meta:
-        model = Cardapio
+        model = Compra
         fields = '__all__'

@@ -5,8 +5,7 @@ from .funcionario import Funcionario
 from .utensilio import Utensilio
 from .utensilio_evento import UtensilioEvento          
 from .tipo_evento import TipoEvento
-from .evento import Evento
-from .endereco import Endereco
+from .evento import Evento, Endereco
 from .prato import Prato
 from .categoria_prato import CategoriaPrato
 from .ingrediente import Ingrediente
@@ -15,4 +14,7 @@ from .equipe_evento import EquipeEvento
 from .orcamento_evento import OrcamentoEvento
 from .ingrediente_prato import IngredientePrato
 from .cliente import Cliente
-from .cardapio import Cardapio
+from .cardapio_evento import CardapioEvento
+from .compra import Compra
+from .convite import Convite
+from .cliente_evento import ClienteEvento

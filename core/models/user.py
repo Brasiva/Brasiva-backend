@@ -51,6 +51,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=None,
     )
+    funcionario = models.ForeignKey(
+    'core.Funcionario',
+    related_name='logins',
+    on_delete=models.CASCADE,
+    null=True,
+    blank=True,
+    )
     is_active = models.BooleanField(
         default=True, verbose_name=_('Usuário está ativo'), help_text=_('Indica que este usuário está ativo.')
     )

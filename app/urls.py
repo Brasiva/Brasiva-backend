@@ -15,7 +15,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet
+from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet, ClienteViewSet, CardapioEventoViewSet, CompraViewSet, ConviteViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
@@ -36,6 +36,10 @@ router.register(r'orcamento-eventos', OrcamentoEventoViewSet, basename='orcament
 router.register(r'equipe-eventos', EquipeEventoViewSet, basename='equipe-eventos')
 router.register(r'utensilio-eventos', UtensilioEventoViewSet, basename='utensilio-eventos')
 router.register(r'ingrediente-pratos', IngredientePratoViewSet, basename='ingrediente-pratos')
+router.register(r'clientes', ClienteViewSet, basename='clientes')
+router.register(r'cardapio-eventos', CardapioEventoViewSet, basename='cardapio-eventos')
+router.register(r'compras', CompraViewSet, basename='compras')
+router.register(r'convites', ConviteViewSet, basename='convites')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
