@@ -1,21 +1,21 @@
 from. categoria_ingrediente import CategoriaIngredienteSerializer
 from .user import UserRegistrationSerializer, UserSerializer
-from .funcionario import FuncionarioSerializer
+from .funcionario import FuncionarioSerializer, FuncionarioListSerializer, FuncionarioRetrieveSerializer
 from .estoque import EstoqueSerializer
-from .evento import EventoSerializer
+from .evento import EventoSerializer, EventoListSerializer, EventoRetrieveSerializer
 from .utensilio import UtensilioSerializer
 from .tipo_evento import TipoEventoSerializer
-from .prato import PratoSerializer
+from .prato import PratoSerializer, PratoListSerializer, PratoRetrieveSerializer
 from .categoria_prato import CategoriaPratoSerializer
-from .ingrediente import IngredienteSerializer
-from .item_compra import ItemCompraSerializer
-from .equipe_evento import EquipeEventoSerializer
-from .orcamento_evento import OrcamentoEventoSerializer
-from .utensilio_evento import UtensilioEventoSerializer
-from .ingrediente_prato import IngredientePratoSerializer
-from .cliente import ClienteSerializer
-from .cardapio_evento import CardapioEventoSerializer
-from .compra import CompraSerializer
-from .convite import ConviteSerializer
-from .cliente_evento import ClienteEventoSerializer
+from .ingrediente import IngredienteSerializer, IngredienteListSerializer, IngredienteRetrieveSerializer
+from .item_compra import ItemCompraSerializer, ItemCompraListSerializer, ItemCompraRetrieveSerializer
+from .equipe_evento import EquipeEventoSerializer, EquipeEventoListSerializer, EquipeEventoRetrieveSerializer
+from .orcamento_evento import OrcamentoEventoSerializer, OrcamentoEventoListSerializer, OrcamentoEventoRetrieveSerializer
+from .utensilio_evento import UtensilioEventoSerializer, UtensilioEventoListSerializer, UtensilioEventoRetrieveSerializer
+from .ingrediente_prato import IngredientePratoSerializer, IngredientePratoListSerializer, IngredientePratoRetrieveSerializer
+from .cliente import ClienteSerializer, ClienteListSerializer, ClienteRetrieveSerializer
 from .endereco import EnderecoSerializer
+from .cardapio_evento import CardapioEventoSerializer, CardapioEventoListSerializer, CardapioEventoRetrieveSerializer
+from .compra import CompraSerializer, CompraListSerializer, CompraRetrieveSerializer
+from .convite import ConviteSerializer, ConviteListSerializer, ConviteRetrieveSerializer
+from .cliente_evento import ClienteEventoSerializer, ClienteEventoListSerializer, ClienteEventoRetrieveSerializer

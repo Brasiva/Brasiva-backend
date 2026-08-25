@@ -19,6 +19,20 @@ class Endereco(models.Model):
 
 
 class Evento(models.Model):
+    STATUS_ORCAMENTO = 'orcamento'
+    STATUS_CONFIRMADO = 'confirmado'
+    STATUS_EM_ANDAMENTO = 'em_andamento'
+    STATUS_CONCLUIDO = 'concluido'
+    STATUS_CANCELADO = 'cancelado'
+
+    STATUS_CHOICES = [
+        (STATUS_ORCAMENTO, 'Orçamento'),
+        (STATUS_CONFIRMADO, 'Confirmado'),
+        (STATUS_EM_ANDAMENTO, 'Em andamento'),
+        (STATUS_CONCLUIDO, 'Concluído'),
+        (STATUS_CANCELADO, 'Cancelado'),
+    ]
+
     clientes = models.ManyToManyField('Cliente', through='ClienteEvento', related_name='eventos')
     quantidade_pessoas = models.PositiveIntegerField(blank=False, null=False)
     data_hora = models.DateTimeField()
@@ -29,6 +43,8 @@ class Evento(models.Model):
     utensilio_evento = models.ManyToManyField('Utensilio', through='UtensilioEvento', related_name='eventos')
     local = models.CharField(max_length=255, blank=True, null=True)
     taxa_deslocamento = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_ORCAMENTO)
+
 
     class Meta:
         verbose_name = 'Evento'

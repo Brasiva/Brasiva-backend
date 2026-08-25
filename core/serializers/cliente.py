@@ -5,15 +5,6 @@ from uploader.models import Image
 from uploader.serializers import ImageSerializer
 
 
-class ClienteRetrieveSerializer(ModelSerializer):
-    foto = ImageSerializer(required=False)
-
-    class Meta:
-        model = Cliente
-        fields = '__all__'
-        depth = 1
-
-
 class ClienteSerializer(ModelSerializer):
     foto_attachment_key = SlugRelatedField(
         source='foto',
@@ -27,3 +18,17 @@ class ClienteSerializer(ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
+
+class ClienteListSerializer(ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ('id', 'nome', 'telefone')
+
+class ClienteRetrieveSerializer(ModelSerializer):
+    foto = ImageSerializer(required=False)
+
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        depth = 1
+

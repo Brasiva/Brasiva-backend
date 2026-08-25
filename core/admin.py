@@ -107,7 +107,8 @@ class ConviteAdmin(ModelAdmin):
 
 @register(Compra)
 class CompraAdmin(ModelAdmin):
-    list_display = ('id', 'data_compra', 'valor')
+    list_display = ('id', 'evento', 'data_compra', 'valor', 'status')
+    list_filter = ('status',)
     ordering = ('-data_compra',)
     list_per_page = 20
 
@@ -129,10 +130,10 @@ class EnderecoAdmin(ModelAdmin):
 @register(Evento)
 class EventoAdmin(ModelAdmin):
    # Exibe os dados reais que existem na tabela Evento
-    list_display = ('id', 'data_hora', 'quantidade_pessoas', 'endereco')
+    list_display = ('id', 'data_hora', 'quantidade_pessoas', 'endereco', 'status')
     # Permite buscar pela cidade ou logradouro através da chave estrangeira (usando __)
-    search_fields = ('endereco__cidade', 'endereco__logradouro')
-    list_filter = ('data_hora', 'endereco__cidade')
+    search_fields = ('endereco__cidade', 'endereco__logradouro',)
+    list_filter = ('data_hora', 'endereco__cidade', 'status') # Permite filtrar por data, cidade e status
     ordering = ('-data_hora',) # O sinal de menos (-) faz ordenar do mais recente para o mais antigo
     list_per_page = 10
 
@@ -217,7 +218,7 @@ class IngredientePratoAdmin(ModelAdmin):
 
 @register(OrcamentoEvento)
 class OrcamentoEventoAdmin(ModelAdmin):
-    list_display = ('evento', 'mao_de_obra', 'valor_total')
+    list_display = ('evento', 'mao_de_obra', 'valor_total', 'status')
     search_fields = ('evento__id',)
     list_per_page = 20
 

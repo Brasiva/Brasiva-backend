@@ -5,15 +5,6 @@ from uploader.models import Image
 from uploader.serializers import ImageSerializer
 
 
-class FuncionarioRetrieveSerializer(ModelSerializer):
-    foto = ImageSerializer(required=False)
-
-    class Meta:
-        model = Funcionario
-        fields = '__all__'
-        depth = 1
-
-
 class FuncionarioSerializer(ModelSerializer):
     foto_attachment_key = SlugRelatedField(
         source='foto',
@@ -27,3 +18,16 @@ class FuncionarioSerializer(ModelSerializer):
     class Meta:
         model = Funcionario
         fields = '__all__'
+
+class FuncionarioListSerializer(ModelSerializer):
+    class Meta:
+        model = Funcionario
+        fields = ('id', 'nome', 'cargo')
+
+class FuncionarioRetrieveSerializer(ModelSerializer):
+    foto = ImageSerializer(required=False)
+
+    class Meta:
+        model = Funcionario
+        fields = '__all__'
+        depth = 1

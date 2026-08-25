@@ -1,21 +1,20 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 
 from core.models import OrcamentoEvento
 
 
-class OrcamentoEventoSerializer(serializers.ModelSerializer):
-    # Expomos os métodos de cálculo (@property) da model como campos de leitura na API
-    valor_total_pratos = serializers.ReadOnlyField()
-    valor_total_equipe = serializers.ReadOnlyField()
-    valor_total_orcamento = serializers.ReadOnlyField()
-
+class OrcamentoEventoSerializer(ModelSerializer):
     class Meta:
         model = OrcamentoEvento
-        fields = [
-            'id', 
-            'evento', 
-            'mao_de_obra', 
-            'valor_total_pratos', 
-            'valor_total_equipe', 
-            'valor_total_orcamento'
-        ]
+        fields = '__all__'
+
+class OrcamentoEventoListSerializer(ModelSerializer):
+    class Meta:
+        model = OrcamentoEvento
+        fields = ('id', 'evento', 'valor_total', 'status')
+
+class OrcamentoEventoRetrieveSerializer(ModelSerializer):
+    class Meta:
+        model = OrcamentoEvento
+        fields = '__all__'
+        depth = 1
