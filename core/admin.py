@@ -150,7 +150,7 @@ class EstoqueAdmin(ModelAdmin):
 
 @register(Funcionario)
 class FuncionarioAdmin(ModelAdmin):
-    list_display = ('nome', 'cargo', 'pagamento')
+    list_display = ('nome', 'cargo',)
     search_fields = ('nome', 'cargo')
     list_filter = ('cargo',)
     ordering = ('nome',)
