@@ -11,13 +11,6 @@ class Ingrediente(models.Model):
         blank=True,
         related_name='ingredientes',
     )
-    estoque = models.OneToOneField(
-        'Estoque',
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='ingrediente',
-    )
 
     class Meta:
         verbose_name = 'Ingrediente'

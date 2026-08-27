@@ -4,6 +4,11 @@ from django.db import models
 class Estoque(models.Model):
     quantidade = models.PositiveIntegerField(default=0)
     und_medida = models.CharField(max_length=20, verbose_name='Unidade de Medida')
+    ingrediente = models.OneToOneField(
+        'Ingrediente',
+        on_delete=models.CASCADE,
+        related_name='estoque',
+    )
 
     class Meta:
         verbose_name = 'Estoque'
