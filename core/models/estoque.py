@@ -8,6 +8,8 @@ class Estoque(models.Model):
         'Ingrediente',
         on_delete=models.CASCADE,
         related_name='estoque',
+        null=True,
+        blank=True,
     )
 
     class Meta:

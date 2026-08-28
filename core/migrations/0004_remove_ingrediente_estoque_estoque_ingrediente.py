@@ -20,5 +20,6 @@ class Migration(migrations.Migration):
             name='ingrediente',
             field=models.OneToOneField(default=None, on_delete=django.db.models.deletion.CASCADE, related_name='estoque', to='core.ingrediente'),
             preserve_default=False,
+            null=True,
         ),
     ]
