@@ -10,7 +10,6 @@ from core.models import (
     CategoriaIngrediente,
     CategoriaPrato,
     CardapioEvento,
-    Convite,
     Compra,
     Cliente,
     ClienteEvento,
@@ -96,14 +95,6 @@ class CategoriaIngredienteAdmin(ModelAdmin):
     list_filter = ('nome',)
     ordering = ('nome',)
     list_per_page = 10
-
-@register(Convite)
-class ConviteAdmin(ModelAdmin):
-    list_display = ('funcionario', 'grupo', 'usado', 'expira_em', 'criado_por')
-    search_fields = ('funcionario__nome',)
-    list_filter = ('usado', 'grupo')
-    ordering = ('-criado_em',)
-    list_per_page = 20
 
 @register(Compra)
 class CompraAdmin(ModelAdmin):

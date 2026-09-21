@@ -17,5 +17,4 @@ from .cliente import ClienteSerializer, ClienteListSerializer, ClienteRetrieveSe
 from .endereco import EnderecoSerializer
 from .cardapio_evento import CardapioEventoSerializer, CardapioEventoListSerializer, CardapioEventoRetrieveSerializer
 from .compra import CompraSerializer, CompraListSerializer, CompraRetrieveSerializer
-from .convite import ConviteSerializer, ConviteListSerializer, ConviteRetrieveSerializer
 from .cliente_evento import ClienteEventoSerializer, ClienteEventoListSerializer, ClienteEventoRetrieveSerializer
