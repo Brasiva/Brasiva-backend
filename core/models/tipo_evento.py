@@ -4,7 +4,7 @@ from django.db import models
 
 class TipoEvento(models.Model):
     nome = models.CharField(max_length=100)
-    cor = ColorField(default='#FF0000')
+    cor = ColorField()
 
     class Meta:
         verbose_name = 'Tipo de Evento'
@@ -12,3 +12,4 @@ class TipoEvento(models.Model):
 
     def __str__(self):
         return self.nome
+

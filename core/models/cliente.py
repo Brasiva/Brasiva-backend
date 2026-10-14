@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
-    telefone = PhoneNumberField(region='BR', blank=False)
+    telefone = models.CharField(max_length=15, blank=False)
     foto = models.ForeignKey(
         Image,
         related_name='+',

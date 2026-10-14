@@ -1,6 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 
 from core.models import CardapioEvento
+from rest_framework import serializers
+from django.utils import timezone
 
 
 class CardapioEventoSerializer(ModelSerializer):
