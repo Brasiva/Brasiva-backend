@@ -13,6 +13,7 @@ class Prato(models.Model):
         'Ingrediente',
         through='IngredientePrato'
     )
+    modo_fazer = models.TextField(blank=True, default='')
 
     class Meta:
         verbose_name = 'Prato'
