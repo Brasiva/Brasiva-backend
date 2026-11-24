@@ -32,7 +32,8 @@ class SiteCatalogAndOrdersTests(APITestCase):
         for page in range(2, response.data.get('total_pages', 1) + 1):
             rows.extend(self.client.get('/api/categoria-pratos/', {'page': page}).data['results'])
         categoria = next(row for row in rows if row['id'] == self.categoria.pk)
-        self.assertEqual(categoria['quantidade_opcoes'], 1)
+        self.assertEqual(categoria['quantidade_opcoes'], 13)
+        self.assertEqual(categoria['quantidade_disponiveis'], 1)
 
     def test_02_products_are_public_and_filter_by_category(self):
         response = self.client.get('/api/pratos/', {'categoria': self.categoria.pk})
