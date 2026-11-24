@@ -5,11 +5,30 @@ from core.models import PedidoSite, Prato
 
 class PedidoSiteSerializer(serializers.ModelSerializer):
     itens = serializers.ListField(child=serializers.DictField(), write_only=True)
+    endereco_evento = serializers.DictField(required=True)
+    horario_evento = serializers.TimeField(required=True)
 
     class Meta:
         model = PedidoSite
         fields = '__all__'
-        read_only_fields = ('status', 'total_estimado', 'criado_em')
+        read_only_fields = (
+            'status', 'total_estimado', 'criado_em', 'evento', 'orcamento_final',
+            'orcamento_enviado_em', 'token_consulta',
+        )
+
+    def validate_endereco_evento(self, endereco):
+        required = ('logradouro', 'numero', 'bairro', 'cidade', 'estado', 'cep')
+        missing = [field for field in required if not str(endereco.get(field, '')).strip()]
+        if missing:
+            raise serializers.ValidationError('Informe rua, bairro, cidade, UF e CEP do evento.')
+        if len(str(endereco['estado']).strip()) != 2:
+            raise serializers.ValidationError('A UF deve ter duas letras.')
+        return {key: str(value).strip() for key, value in endereco.items() if value is not None}
+
+    def validate_horario_evento(self, horario):
+        if horario is None:
+            raise serializers.ValidationError('Informe o horário do evento.')
+        return horario
 
     def validate_itens(self, itens):
         if not itens:

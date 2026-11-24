@@ -1,11 +1,12 @@
 from datetime import date, timedelta
 from decimal import Decimal
 
+from django.test import override_settings
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from core.models import CategoriaPrato, Ingrediente, IngredientePrato, Notificacao, PedidoSite, Prato, User
+from core.models import CategoriaPrato, Evento, Ingrediente, IngredientePrato, Notificacao, OrcamentoEvento, PedidoSite, Prato, User
 
 
 class SiteCatalogAndOrdersTests(APITestCase):
@@ -21,6 +22,8 @@ class SiteCatalogAndOrdersTests(APITestCase):
         return {
             'nome': 'Cliente de teste', 'email': 'cliente@example.test', 'telefone': '+5511999999999',
             'tipo_evento': 'Aniversário', 'data_evento': (date.today() + timedelta(days=30)).isoformat(),
+            'horario_evento': '18:30',
+            'endereco_evento': {'logradouro': 'Rua das Flores', 'numero': '42', 'bairro': 'Centro', 'cidade': 'Florianopolis', 'estado': 'SC', 'cep': '88000-000', 'complemento': 'Sala 2'},
             'convidados': 20, 'observacoes': 'Teste de integração',
             'itens': [{'prato': self.prato.pk, 'quantidade': 10}],
         }
@@ -80,6 +83,35 @@ class SiteCatalogAndOrdersTests(APITestCase):
         changed = self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'em_analise'}, format='json')
         self.assertEqual(changed.status_code, status.HTTP_200_OK)
         self.assertEqual(PedidoSite.objects.get(pk=created.data['id']).status, 'em_analise')
+        accepted = self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'aprovado'}, format='json')
+        self.assertEqual(accepted.status_code, status.HTTP_200_OK, accepted.data)
+        order = PedidoSite.objects.get(pk=created.data['id'])
+        self.assertIsNotNone(order.evento_id)
+        event = Evento.objects.get(pk=order.evento_id)
+        self.assertEqual(event.quantidade_pessoas, 20)
+        self.assertEqual(event.endereco.logradouro, 'Rua das Flores')
+        self.assertTrue(OrcamentoEvento.objects.filter(evento=event).exists())
+        self.assertEqual(event.prato_cardapio.count(), 1)
+        repeated = self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'aprovado'}, format='json')
+        self.assertEqual(repeated.status_code, status.HTTP_200_OK)
+        self.assertEqual(Evento.objects.filter(pk=order.evento_id).count(), 1)
+
+    @override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend', EMAIL_HOST='mail.example.test', DEFAULT_FROM_EMAIL='contato@example.test', BRASIVA_SITE_URL='https://brasiva.example.test')
+    def test_quote_is_saved_emailed_and_publicly_consultable_by_token(self):
+        created = self.client.post('/api/pedidos-site/', self.payload(), format='json')
+        self.client.force_authenticate(self.staff)
+        self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'aprovado'}, format='json')
+        saved = self.client.post(f"/api/pedidos-site/{created.data['id']}/enviar-orcamento/", {'valor_final': '725.50'}, format='json')
+        self.assertEqual(saved.status_code, status.HTTP_200_OK, saved.data)
+        self.assertTrue(saved.data['email_enviado'])
+        self.assertEqual(PedidoSite.objects.get(pk=created.data['id']).orcamento_final, Decimal('725.50'))
+        token = PedidoSite.objects.get(pk=created.data['id']).token_consulta
+        self.client.force_authenticate(None)
+        public = self.client.get('/api/pedidos-site/consulta-orcamento/', {'token': token})
+        self.assertEqual(public.status_code, status.HTTP_200_OK)
+        self.assertEqual(str(public.data['orcamento_final']), '725.50')
+        self.assertNotIn('email', public.data)
+
 
     def test_08_order_details_are_private(self):
         self.client.post('/api/pedidos-site/', self.payload(), format='json')

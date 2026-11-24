@@ -7,7 +7,7 @@ from core.serializers import PratoSerializer, PratoRetrieveSerializer, PratoList
 
 
 class PratoViewSet(ModelViewSet):
-    queryset = Prato.objects.select_related('categoria').all().order_by('categoria__nome', 'nome')
+    queryset = Prato.objects.select_related('categoria', 'imagem').all().order_by('categoria__nome', 'nome')
     serializer_class = PratoSerializer
 
     def get_serializer_class(self):
