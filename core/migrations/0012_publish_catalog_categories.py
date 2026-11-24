@@ -11,6 +11,7 @@ def hide_legacy_empty_categories(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
+    initial = True
     dependencies = [('core', '0011_catalog_initial')]
     operations = [
         migrations.AddField('categoriaprato', 'publicada', models.BooleanField(default=True)),

@@ -3,6 +3,14 @@
 from django.db import migrations
 
 
+def delete_convite_if_present(apps, schema_editor):
+    Convite = apps.get_model('core', 'Convite')
+    with schema_editor.connection.cursor() as cursor:
+        tables = schema_editor.connection.introspection.table_names(cursor)
+    if Convite._meta.db_table in tables:
+        schema_editor.delete_model(Convite)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,7 +18,12 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.DeleteModel(
-            name='Convite',
+        migrations.SeparateDatabaseAndState(
+            database_operations=[
+                migrations.RunPython(delete_convite_if_present, migrations.RunPython.noop),
+            ],
+            state_operations=[
+                migrations.DeleteModel(name='Convite'),
+            ],
         ),
     ]

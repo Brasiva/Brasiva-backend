@@ -81,6 +81,7 @@ def seed_catalog(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
+    initial = True
     dependencies = [('core', '0010_notificacao')]
 
     operations = [
