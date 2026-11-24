@@ -1,10 +1,11 @@
 from datetime import date, timedelta
 from decimal import Decimal
 
+from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from core.models import CategoriaPrato, Notificacao, PedidoSite, Prato, User
+from core.models import CategoriaPrato, Ingrediente, IngredientePrato, Notificacao, PedidoSite, Prato, User
 
 
 class SiteCatalogAndOrdersTests(APITestCase):
@@ -150,3 +151,31 @@ class SiteCatalogAndOrdersTests(APITestCase):
         notification_rows = notifications.data['results'] if 'results' in notifications.data else notifications.data
         self.assertEqual(order_rows[0]['id'], order.data['id'])
         self.assertTrue(any(row['titulo'] == 'Nova solicitação de evento' for row in notification_rows))
+
+    def test_admin_can_open_and_save_prato_form(self):
+        admin_user = User.objects.create_superuser('admin@example.test', 'senha-admin-123')
+        self.client.force_login(admin_user)
+        add_url = reverse('admin:core_prato_add')
+
+        form_response = self.client.get(add_url)
+        self.assertEqual(form_response.status_code, status.HTTP_200_OK)
+        ingrediente = Ingrediente.objects.create(nome='Farinha de teste')
+
+        response = self.client.post(add_url, {
+            'nome': 'Prato criado pelo admin',
+            'descricao': 'Cadastro pelo formulário Django Admin',
+            'valor': '18.50',
+            'unidade': 'unidade',
+            'disponivel': 'on',
+            'categoria': self.categoria.pk,
+            'modo_fazer': 'Preparar e servir.',
+            'ingredienteprato_set-TOTAL_FORMS': '1',
+            'ingredienteprato_set-INITIAL_FORMS': '0',
+            'ingredienteprato_set-MIN_NUM_FORMS': '0',
+            'ingredienteprato_set-MAX_NUM_FORMS': '1000',
+            'ingredienteprato_set-0-ingrediente': ingrediente.pk,
+            'ingredienteprato_set-0-quantidade': '0.250',
+        }, follow=True)
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.context)
+        prato = Prato.objects.get(nome='Prato criado pelo admin', categoria=self.categoria)
+        self.assertTrue(IngredientePrato.objects.filter(prato=prato, ingrediente=ingrediente, quantidade=Decimal('0.250')).exists())

@@ -2,7 +2,7 @@
 Django admin customization.
 """
 
-from django.contrib.admin import ModelAdmin, register
+from django.contrib.admin import ModelAdmin, TabularInline, register
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
@@ -162,11 +162,26 @@ class TipoEventoAdmin(ModelAdmin):
     ordering = ('nome',)
     list_per_page = 10
 
+
+class IngredientePratoInline(TabularInline):
+    model = IngredientePrato
+    extra = 1
+
+
 @register(Prato)
 class PratoAdmin(ModelAdmin):
-    list_display = ('nome', 'valor', 'categoria')
-    search_fields = ('nome', 'categoria__nome')
-    list_filter = ('categoria',)
+    fieldsets = (
+        ('Identificação', {'fields': ('nome', 'categoria', 'descricao')}),
+        ('Preço e disponibilidade', {'fields': ('valor', 'unidade', 'sob_orcamento', 'disponivel')}),
+        ('Preparo e imagem', {'fields': ('modo_fazer', 'imagem')}),
+        ('Datas', {'fields': ('criado_em', 'atualizado_em')}),
+    )
+    readonly_fields = ('criado_em', 'atualizado_em')
+    inlines = (IngredientePratoInline,)
+    list_display = ('nome', 'valor', 'categoria', 'disponivel', 'sob_orcamento')
+    search_fields = ('nome', 'descricao', 'categoria__nome')
+    list_filter = ('categoria', 'disponivel', 'sob_orcamento')
+    list_editable = ('disponivel',)
     ordering = ('nome',)
     list_per_page = 15
 
