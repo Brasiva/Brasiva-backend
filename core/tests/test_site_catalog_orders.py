@@ -123,3 +123,30 @@ class SiteCatalogAndOrdersTests(APITestCase):
         names = {item['nome'] for item in rows}
         self.assertEqual(len(names), 12)
         self.assertIn('Serviços adicionais', names)
+
+    def test_staff_can_login_with_email_and_access_admin_profile(self):
+        response = self.client.post('/api/token/', {
+            'email': 'equipe@example.test', 'password': 'senha-segura-123',
+        }, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.data)
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {response.data['access']}")
+        profile = self.client.get('/api/usuarios/me/')
+        self.assertEqual(profile.status_code, status.HTTP_200_OK)
+        self.assertTrue(profile.data['is_staff'])
+
+    def test_staff_login_receives_site_order_and_notification(self):
+        order = self.client.post('/api/pedidos-site/', self.payload(), format='json')
+        self.assertEqual(order.status_code, status.HTTP_201_CREATED, order.data)
+        login = self.client.post('/api/token/', {
+            'email': 'equipe@example.test', 'password': 'senha-segura-123',
+        }, format='json')
+        self.assertEqual(login.status_code, status.HTTP_200_OK, login.data)
+        self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {login.data['access']}")
+        orders = self.client.get('/api/pedidos-site/')
+        notifications = self.client.get('/api/notificacoes/')
+        self.assertEqual(orders.status_code, status.HTTP_200_OK)
+        self.assertEqual(notifications.status_code, status.HTTP_200_OK)
+        order_rows = orders.data['results'] if 'results' in orders.data else orders.data
+        notification_rows = notifications.data['results'] if 'results' in notifications.data else notifications.data
+        self.assertEqual(order_rows[0]['id'], order.data['id'])
+        self.assertTrue(any(row['titulo'] == 'Nova solicitação de evento' for row in notification_rows))

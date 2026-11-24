@@ -7,7 +7,7 @@ class Endereco(models.Model):
     bairro = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=2)     # UF
-    cep = models.PositiveIntegerField(verbose_name='CEP', blank=True, null=True) 
+    cep = models.CharField(verbose_name='CEP', max_length=10, blank=True, null=True)
     complemento = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
@@ -15,4 +15,4 @@ class Endereco(models.Model):
         verbose_name_plural = 'Endereços'
 
     def __str__(self):
-        return f"{self.logradouro}, {self.numero} - {self.cidade}/{self.estado}" 
+        return f"{self.logradouro}, {self.numero} - {self.cidade}/{self.estado}"

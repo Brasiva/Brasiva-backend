@@ -11,37 +11,37 @@ CATALOG = [
         ('Coxinha de frango', '95.00'), ('Bolinha de queijo', '90.00'), ('Risole de presunto e queijo', '90.00'), ('Risole de carne', '95.00'), ('Quibe tradicional', '95.00'), ('Enroladinho de salsicha', '85.00'), ('Croquete de carne', '100.00'), ('Bolinho de aipim com carne', '110.00'), ('Empadinha de frango', '120.00'), ('Esfiha de carne', '110.00'), ('Pastelzinho de queijo', '95.00'), ('Pastelzinho de carne', '100.00'),
     ]),
     ('Salgados especiais e finos', 'cento (100 unidades)', [
-        ('CamarÃ£o empanado', '220.00'), ('Mini quiche de alho-porÃ³', '160.00'), ('Mini quiche de queijo', '150.00'), ('Canudinho de frango', '130.00'), ('Barquete de salpicÃ£o', '160.00'), ('Trouxinha de frango', '145.00'), ('Folhado de queijo', '160.00'), ('Folhado de presunto e queijo', '165.00'), ('Mini empada de camarÃ£o', '220.00'), ('Mini pastel de camarÃ£o', '210.00'),
+        ('Camarão empanado', '220.00'), ('Mini quiche de alho-poró', '160.00'), ('Mini quiche de queijo', '150.00'), ('Canudinho de frango', '130.00'), ('Barquete de salpicão', '160.00'), ('Trouxinha de frango', '145.00'), ('Folhado de queijo', '160.00'), ('Folhado de presunto e queijo', '165.00'), ('Mini empada de camarão', '220.00'), ('Mini pastel de camarão', '210.00'),
     ]),
     ('Docinhos tradicionais', 'cento (100 unidades)', [
-        ('Brigadeiro tradicional', '110.00'), ('Beijinho', '105.00'), ('Cajuzinho', '110.00'), ('Bicho-de-pÃ©', '110.00'), ('Olho-de-sogra', '125.00'), ('Casadinho', '120.00'), ('Dois amores', '120.00'), ('Ninho tradicional', '125.00'), ('Brigadeiro branco', '120.00'), ('Amendoim doce', '110.00'),
+        ('Brigadeiro tradicional', '110.00'), ('Beijinho', '105.00'), ('Cajuzinho', '110.00'), ('Bicho-de-pé', '110.00'), ('Olho-de-sogra', '125.00'), ('Casadinho', '120.00'), ('Dois amores', '120.00'), ('Ninho tradicional', '125.00'), ('Brigadeiro branco', '120.00'), ('Amendoim doce', '110.00'),
     ]),
     ('Docinhos gourmet', 'cento (100 unidades)', [
-        ('Brigadeiro de pistache', '220.00'), ('Brigadeiro de Nutella', '200.00'), ('Brigadeiro de Oreo', '180.00'), ('Brigadeiro de churros', '170.00'), ('Brigadeiro de paÃ§oca', '160.00'), ('Ninho com Nutella', '190.00'), ('Trufa de chocolate', '180.00'), ('Camafeu de nozes', '230.00'), ('Copinho de chocolate', '190.00'), ('Mini brownie', '180.00'),
+        ('Brigadeiro de pistache', '220.00'), ('Brigadeiro de Nutella', '200.00'), ('Brigadeiro de Oreo', '180.00'), ('Brigadeiro de churros', '170.00'), ('Brigadeiro de paçoca', '160.00'), ('Ninho com Nutella', '190.00'), ('Trufa de chocolate', '180.00'), ('Camafeu de nozes', '230.00'), ('Copinho de chocolate', '190.00'), ('Mini brownie', '180.00'),
     ]),
     ('Pratos principais', 'por pessoa', [
-        ('Strogonoff de frango', '32.00'), ('Strogonoff de carne', '39.00'), ('FricassÃª de frango', '35.00'), ('Lasanha Ã  bolonhesa', '38.00'), ('Lasanha de frango', '35.00'), ('Escondidinho de carne', '36.00'), ('Escondidinho de frango', '33.00'), ('Frango ao molho branco', '36.00'), ('Carne assada ao molho madeira', '48.00'), ('FilÃ© de frango grelhado', '32.00'), ('FilÃ© de peixe ao molho', '42.00'), ('Pernil assado', '39.00'), ('MedalhÃ£o de frango', '42.00'), ('Risoto de frango', '38.00'), ('Risoto de camarÃ£o', '55.00'),
+        ('Strogonoff de frango', '32.00'), ('Strogonoff de carne', '39.00'), ('Fricassê de frango', '35.00'), ('Lasanha à bolonhesa', '38.00'), ('Lasanha de frango', '35.00'), ('Escondidinho de carne', '36.00'), ('Escondidinho de frango', '33.00'), ('Frango ao molho branco', '36.00'), ('Carne assada ao molho madeira', '48.00'), ('Filé de frango grelhado', '32.00'), ('Filé de peixe ao molho', '42.00'), ('Pernil assado', '39.00'), ('Medalhão de frango', '42.00'), ('Risoto de frango', '38.00'), ('Risoto de camarão', '55.00'),
     ]),
     ('Acompanhamentos', 'kg', [
-        ('Arroz branco', '25.00'), ('Arroz Ã  grega', '35.00'), ('Arroz com brÃ³colis', '32.00'), ('Arroz carreteiro', '42.00'), ('PurÃª de batata', '30.00'), ('Batata gratinada', '42.00'), ('Batata rÃºstica', '35.00'), ('Farofa especial', '32.00'), ('MacarrÃ£o ao molho branco', '35.00'), ('MacarrÃ£o Ã  bolonhesa', '38.00'), ('Legumes salteados', '35.00'), ('Polenta cremosa', '28.00'),
+        ('Arroz branco', '25.00'), ('Arroz à grega', '35.00'), ('Arroz com brócolis', '32.00'), ('Arroz carreteiro', '42.00'), ('Purê de batata', '30.00'), ('Batata gratinada', '42.00'), ('Batata rústica', '35.00'), ('Farofa especial', '32.00'), ('Macarrão ao molho branco', '35.00'), ('Macarrão à bolonhesa', '38.00'), ('Legumes salteados', '35.00'), ('Polenta cremosa', '28.00'),
     ]),
     ('Saladas', 'kg', [
-        ('Salada tropical', '42.00'), ('Salada Caesar', '48.00'), ('Salada de maionese', '35.00'), ('SalpicÃ£o de frango', '45.00'), ('Salada de folhas verdes', '32.00'), ('Salada de legumes', '35.00'), ('Salada de macarrÃ£o', '38.00'), ('Vinagrete', '25.00'),
+        ('Salada tropical', '42.00'), ('Salada Caesar', '48.00'), ('Salada de maionese', '35.00'), ('Salpicão de frango', '45.00'), ('Salada de folhas verdes', '32.00'), ('Salada de legumes', '35.00'), ('Salada de macarrão', '38.00'), ('Vinagrete', '25.00'),
     ]),
     ('Sobremesas', 'kg', [
-        ('Mousse de chocolate', '55.00'), ('Mousse de maracujÃ¡', '50.00'), ('PavÃª de chocolate', '60.00'), ('PavÃª de limÃ£o', '55.00'), ('Pudim de leite condensado', '65.00'), ('Manjar de coco', '55.00'), ('Torta de limÃ£o', '70.00'), ('Gelatina colorida', '35.00'), ('Copinho de sobremesa', '7.00', 'unidade'), ('Mini cheesecake', '9.00', 'unidade'),
+        ('Mousse de chocolate', '55.00'), ('Mousse de maracujá', '50.00'), ('Pavê de chocolate', '60.00'), ('Pavê de limão', '55.00'), ('Pudim de leite condensado', '65.00'), ('Manjar de coco', '55.00'), ('Torta de limão', '70.00'), ('Gelatina colorida', '35.00'), ('Copinho de sobremesa', '7.00', 'unidade'), ('Mini cheesecake', '9.00', 'unidade'),
     ]),
     ('Bolos e tortas', 'kg', [
-        ('Bolo de chocolate', '65.00'), ('Bolo de brigadeiro', '75.00'), ('Bolo de ninho', '80.00'), ('Bolo de cenoura com chocolate', '65.00'), ('Bolo de prestÃ­gio', '75.00'), ('Bolo de morango', '85.00'), ('Bolo de abacaxi', '75.00'), ('Bolo de doce de leite', '80.00'), ('Bolo de aniversÃ¡rio decorado', '95.00'), ('Torta de limÃ£o', '70.00'), ('Torta holandesa', '85.00'), ('Torta de morango', '85.00'), ('Torta de maracujÃ¡', '75.00'), ('Naked cake', '110.00'),
+        ('Bolo de chocolate', '65.00'), ('Bolo de brigadeiro', '75.00'), ('Bolo de ninho', '80.00'), ('Bolo de cenoura com chocolate', '65.00'), ('Bolo de prestígio', '75.00'), ('Bolo de morango', '85.00'), ('Bolo de abacaxi', '75.00'), ('Bolo de doce de leite', '80.00'), ('Bolo de aniversário decorado', '95.00'), ('Torta de limão', '70.00'), ('Torta holandesa', '85.00'), ('Torta de morango', '85.00'), ('Torta de maracujá', '75.00'), ('Naked cake', '110.00'),
     ]),
     ('Bebidas', 'unidade', [
-        ('Ãgua mineral', '3.50', '500 ml'), ('Ãgua com gÃ¡s', '4.50', '500 ml'), ('Refrigerante', '12.00', '2 litros'), ('Refrigerante lata', '5.00', '350 ml'), ('Suco natural de laranja', '15.00', '1 litro'), ('Suco natural de uva', '16.00', '1 litro'), ('Suco de maracujÃ¡', '14.00', '1 litro'), ('Suco de limÃ£o', '12.00', '1 litro'), ('ChÃ¡ gelado', '12.00', '1 litro'),
+        ('Água mineral', '3.50', '500 ml'), ('Água com gás', '4.50', '500 ml'), ('Refrigerante', '12.00', '2 litros'), ('Refrigerante lata', '5.00', '350 ml'), ('Suco natural de laranja', '15.00', '1 litro'), ('Suco natural de uva', '16.00', '1 litro'), ('Suco de maracujá', '14.00', '1 litro'), ('Suco de limão', '12.00', '1 litro'), ('Chá gelado', '12.00', '1 litro'),
     ]),
     ('Lanches e finger foods', 'unidade', [
-        ('Mini hambÃºrguer', '7.00'), ('Mini cachorro-quente', '6.00'), ('Mini pizza', '6.50'), ('Mini sanduÃ­che natural', '7.00'), ('Wrap de frango', '9.00'), ('Barquinha de frango', '6.00'), ('Mini hot dog gourmet', '8.00'), ('TÃ¡bua de frios', '120.00', 'porÃ§Ã£o'), ('Mini bruschetta', '6.00'), ('Espetinho caprese', '7.00'),
+        ('Mini hambúrguer', '7.00'), ('Mini cachorro-quente', '6.00'), ('Mini pizza', '6.50'), ('Mini sanduíche natural', '7.00'), ('Wrap de frango', '9.00'), ('Barquinha de frango', '6.00'), ('Mini hot dog gourmet', '8.00'), ('Tábua de frios', '120.00', 'porção'), ('Mini bruschetta', '6.00'), ('Espetinho caprese', '7.00'),
     ]),
-    ('ServiÃ§os adicionais', 'evento', [
-        ('GarÃ§om', '180.00', 'diÃ¡ria'), ('Copeira', '170.00', 'diÃ¡ria'), ('Churrasqueiro', '250.00', 'diÃ¡ria'), ('Equipe de cozinha', '300.00', 'diÃ¡ria'), ('Montagem de mesa', '150.00', 'evento'), ('DecoraÃ§Ã£o simples', '250.00', 'evento'), ('DecoraÃ§Ã£o personalizada', None, 'sob orÃ§amento'), ('Aluguel de pratos e talheres', '5.00', 'por pessoa'), ('Aluguel de copos', '3.00', 'por pessoa'), ('Aluguel de toalhas', '15.00', 'unidade'), ('Entrega', '15.00', 'por pedido'),
+    ('Serviços adicionais', 'evento', [
+        ('Garçom', '180.00', 'diária'), ('Copeira', '170.00', 'diária'), ('Churrasqueiro', '250.00', 'diária'), ('Equipe de cozinha', '300.00', 'diária'), ('Montagem de mesa', '150.00', 'evento'), ('Decoração simples', '250.00', 'evento'), ('Decoração personalizada', None, 'sob orçamento'), ('Aluguel de pratos e talheres', '5.00', 'por pessoa'), ('Aluguel de copos', '3.00', 'por pessoa'), ('Aluguel de toalhas', '15.00', 'unidade'), ('Entrega', '15.00', 'por pedido'),
     ]),
 ]
 
@@ -69,7 +69,7 @@ def seed_catalog(apps, schema_editor):
             quote_only = price is None
             Dish.objects.using(database).create(
                 nome=product_name,
-                descricao='Valor inicial sugerido; confirmar condiÃ§Ãµes com a equipe Brasiva.' if product_name == 'Entrega' else '',
+                descricao='Valor inicial sugerido; confirmar condições com a equipe Brasiva.' if product_name == 'Entrega' else '',
                 valor=Decimal(price) if price is not None else None,
                 categoria_id=category.pk,
                 unidade=specific_unit[0] if specific_unit else default_unit,

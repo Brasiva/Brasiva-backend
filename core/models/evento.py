@@ -17,57 +17,57 @@ class Evento(models.Model):
     ]
 
     clientes = models.ManyToManyField(
-        'Cliente', 
-        through='ClienteEvento', 
+        'Cliente',
+        through='ClienteEvento',
         related_name='eventos'
     )
     quantidade_pessoas = models.PositiveIntegerField(
-        blank=False, 
+        blank=False,
         null=False
     )
     data_hora = models.DateTimeField()
     taxa_utensilio = models.DecimalField(
-        max_digits=10, 
+        max_digits=10,
         decimal_places=2
     )
     endereco = models.ForeignKey(
-        Endereco, 
-        related_name='eventos', 
-        on_delete=models.SET_NULL, 
-        null=True, 
+        Endereco,
+        related_name='eventos',
+        on_delete=models.SET_NULL,
+        null=True,
         blank=False
     )
     tipo_evento = models.ForeignKey(
-        'TipoEvento', 
-        related_name='eventos', 
-        on_delete=models.PROTECT, 
-        null=False, 
+        'TipoEvento',
+        related_name='eventos',
+        on_delete=models.PROTECT,
+        null=True,
         blank=False
     )
     equipe_evento = models.ManyToManyField(
-        'Funcionario', 
-        through='EquipeEvento', 
+        'Funcionario',
+        through='EquipeEvento',
         related_name='eventos'
     )
     utensilio_evento = models.ManyToManyField(
-        'Utensilio', 
-        through='UtensilioEvento', 
+        'Utensilio',
+        through='UtensilioEvento',
         related_name='eventos'
     )
     local = models.CharField(
-        max_length=255, 
-        blank=True, 
+        max_length=255,
+        blank=True,
         null=True
     )
     taxa_deslocamento = models.DecimalField(
-        max_digits=10, 
-        decimal_places=2, 
-        null=True, 
+        max_digits=10,
+        decimal_places=2,
+        null=True,
         blank=True
     )
     status = models.CharField(
-        max_length=20, 
-        choices=STATUS_CHOICES, 
+        max_length=20,
+        choices=STATUS_CHOICES,
         default=STATUS_CONFIRMADO
     )
 
