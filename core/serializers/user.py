@@ -30,6 +30,7 @@ class UserSerializer(ModelSerializer):
             'is_superuser',
             'last_login',
             'groups')
+        read_only_fields = ('id', 'foto', 'is_active', 'is_staff', 'is_superuser', 'last_login', 'groups')
         depth = 1
 
 

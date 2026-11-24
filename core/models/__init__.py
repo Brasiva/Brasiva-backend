@@ -17,3 +17,5 @@ from .cliente import Cliente
 from .cardapio_evento import CardapioEvento
 from .compra import Compra
 from .cliente_evento import ClienteEvento
+from .pedido_site import PedidoSite
+from .notificacao import Notificacao

@@ -1,4 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAdminUser
+
 from core.models import Ingrediente
 from core.serializers import IngredienteSerializer, IngredienteRetrieveSerializer, IngredienteListSerializer
 
@@ -13,3 +15,4 @@ class IngredienteViewSet(ModelViewSet):
         elif self.action == 'retrieve':
             return IngredienteRetrieveSerializer
         return IngredienteSerializer
+    permission_classes = [IsAdminUser]

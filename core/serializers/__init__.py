@@ -1,4 +1,4 @@
-from. categoria_ingrediente import CategoriaIngredienteSerializer
+from .categoria_ingrediente import CategoriaIngredienteSerializer
 from .user import UserRegistrationSerializer, UserSerializer
 from .funcionario import FuncionarioSerializer, FuncionarioListSerializer, FuncionarioRetrieveSerializer
 from .estoque import EstoqueSerializer
@@ -18,3 +18,5 @@ from .endereco import EnderecoSerializer
 from .cardapio_evento import CardapioEventoSerializer, CardapioEventoListSerializer, CardapioEventoRetrieveSerializer
 from .compra import CompraSerializer, CompraListSerializer, CompraRetrieveSerializer
 from .cliente_evento import ClienteEventoSerializer, ClienteEventoListSerializer, ClienteEventoRetrieveSerializer
+from .pedido_site import PedidoSiteAdminSerializer, PedidoSiteSerializer
+from .notificacao import NotificacaoSerializer

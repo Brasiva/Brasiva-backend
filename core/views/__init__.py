@@ -18,4 +18,5 @@ from .endereco import EnderecoViewSet
 from .cardapio_evento import CardapioEventoViewSet
 from .compra import CompraViewSet
 from .cliente_evento import ClienteEventoViewSet
-from .endereco import EnderecoViewSet
+from .pedido_site import PedidoSiteViewSet
+from .notificacao import NotificacaoViewSet

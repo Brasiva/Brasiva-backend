@@ -11,7 +11,7 @@ class IngredienteSerializer(ModelSerializer):
 class IngredienteListSerializer(ModelSerializer):
     class Meta:
         model = Ingrediente
-        fields = ('id', 'nome', 'categoria_ingrediente')
+        fields = ('id', 'nome', 'valor', 'und_med', 'categoria_ingrediente')
 
 class IngredienteRetrieveSerializer(ModelSerializer):
     class Meta:

@@ -15,7 +15,15 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import FuncionarioViewSet, UserRegistrationView, UserViewSet, UtensilioViewSet, TipoEventoViewSet, PratoViewSet, EventoViewSet, EnderecoViewSet, CategoriaPratoViewSet, IngredienteViewSet, EstoqueViewSet, ItemCompraViewSet, CategoriaIngredienteViewSet, OrcamentoEventoViewSet, EquipeEventoViewSet, UtensilioEventoViewSet, IngredientePratoViewSet, ClienteViewSet, CardapioEventoViewSet, CompraViewSet
+from core.views import (
+    CardapioEventoViewSet, CategoriaIngredienteViewSet, CategoriaPratoViewSet,
+    ClienteEventoViewSet, ClienteViewSet, CompraViewSet, EnderecoViewSet,
+    EquipeEventoViewSet, EstoqueViewSet, EventoViewSet, FuncionarioViewSet,
+    IngredientePratoViewSet, IngredienteViewSet, ItemCompraViewSet,
+    NotificacaoViewSet, OrcamentoEventoViewSet, PedidoSiteViewSet, PratoViewSet,
+    TipoEventoViewSet, UserRegistrationView, UserViewSet, UtensilioEventoViewSet,
+    UtensilioViewSet,
+)
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
@@ -27,7 +35,11 @@ router.register(r'funcionarios', FuncionarioViewSet, basename='funcionarios')
 router.register(r'utensilios', UtensilioViewSet, basename='utensilios')
 router.register(r'tipo-eventos', TipoEventoViewSet, basename='tipo-eventos')
 router.register(r'pratos', PratoViewSet, basename='pratos')
+router.register(r'pedidos-site', PedidoSiteViewSet, basename='pedidos-site')
+router.register(r'notificacoes', NotificacaoViewSet, basename='notificacoes')
 router.register(r'eventos', EventoViewSet, basename='eventos')
+router.register(r'clientes', ClienteViewSet, basename='clientes')
+router.register(r'cliente-eventos', ClienteEventoViewSet, basename='cliente-eventos')
 router.register(r'enderecos', EnderecoViewSet, basename='enderecos')
 router.register(r'estoque', EstoqueViewSet, basename='estoque')
 router.register(r'ingredientes', IngredienteViewSet, basename='ingredientes')
@@ -36,7 +48,6 @@ router.register(r'orcamento-eventos', OrcamentoEventoViewSet, basename='orcament
 router.register(r'equipe-eventos', EquipeEventoViewSet, basename='equipe-eventos')
 router.register(r'utensilio-eventos', UtensilioEventoViewSet, basename='utensilio-eventos')
 router.register(r'ingrediente-pratos', IngredientePratoViewSet, basename='ingrediente-pratos')
-router.register(r'clientes', ClienteViewSet, basename='clientes')
 router.register(r'cardapio-eventos', CardapioEventoViewSet, basename='cardapio-eventos')
 router.register(r'compras', CompraViewSet, basename='compras')
 

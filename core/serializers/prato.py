@@ -11,7 +11,7 @@ class PratoSerializer(ModelSerializer):
 class PratoListSerializer(ModelSerializer):
     class Meta:
         model = Prato
-        fields = ('id', 'nome', 'categoria', 'valor', 'modo_fazer')
+        fields = ('id', 'nome', 'categoria', 'valor', 'modo_fazer', 'descricao', 'unidade', 'disponivel', 'sob_orcamento')
 
 class PratoRetrieveSerializer(ModelSerializer):
     class Meta:

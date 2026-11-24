@@ -11,6 +11,7 @@ class Estoque(models.Model):
         null=True,
         blank=True,
     )
+    quantidade_minima = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name = 'Estoque'

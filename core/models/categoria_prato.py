@@ -3,6 +3,7 @@ from django.db import models
 
 class CategoriaPrato(models.Model):
     nome = models.CharField(max_length=100, unique=True, verbose_name="Nome da Categoria")
+    publicada = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Categoria do Prato'
