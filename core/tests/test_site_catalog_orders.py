@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 from decimal import Decimal
 
+from django.core import mail
 from django.test import override_settings
 from django.urls import reverse
 from rest_framework import status
@@ -97,20 +98,50 @@ class SiteCatalogAndOrdersTests(APITestCase):
         self.assertEqual(Evento.objects.filter(pk=order.evento_id).count(), 1)
 
     @override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend', EMAIL_HOST='mail.example.test', DEFAULT_FROM_EMAIL='contato@example.test', BRASIVA_SITE_URL='https://brasiva.example.test')
-    def test_quote_is_saved_emailed_and_publicly_consultable_by_token(self):
+    def test_quote_must_be_saved_before_sending_and_email_is_not_duplicated(self):
         created = self.client.post('/api/pedidos-site/', self.payload(), format='json')
         self.client.force_authenticate(self.staff)
         self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'aprovado'}, format='json')
-        saved = self.client.post(f"/api/pedidos-site/{created.data['id']}/enviar-orcamento/", {'valor_final': '725.50'}, format='json')
+        send_url = f"/api/pedidos-site/{created.data['id']}/enviar-orcamento/"
+        save_url = f"/api/pedidos-site/{created.data['id']}/salvar-orcamento/"
+        unsaved = self.client.post(send_url, {}, format='json')
+        self.assertEqual(unsaved.status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(len(mail.outbox), 0)
+
+        saved = self.client.post(save_url, {'valor_final': '725.50'}, format='json')
         self.assertEqual(saved.status_code, status.HTTP_200_OK, saved.data)
-        self.assertTrue(saved.data['email_enviado'])
+        self.assertTrue(saved.data['salvo'])
         self.assertEqual(PedidoSite.objects.get(pk=created.data['id']).orcamento_final, Decimal('725.50'))
+        sent = self.client.post(send_url, {}, format='json')
+        self.assertEqual(sent.status_code, status.HTTP_200_OK, sent.data)
+        self.assertTrue(sent.data['email_enviado'])
+        self.assertEqual(len(mail.outbox), 1)
+        message = mail.outbox[0]
+        self.assertEqual(message.to, ['cliente@example.test'])
+        for detail in ('Cliente de teste', f"Pedido: #{created.data['id']}", 'Aniversário', 'Rua das Flores', '10 × Coxinha de teste', 'Valor final: R$ 725.50'):
+            self.assertIn(detail, message.body)
+        self.assertTrue(message.alternatives)
+        duplicate = self.client.post(send_url, {}, format='json')
+        self.assertEqual(duplicate.status_code, status.HTTP_409_CONFLICT)
+        self.assertEqual(len(mail.outbox), 1)
+        changed_after_send = self.client.post(save_url, {'valor_final': '800.00'}, format='json')
+        self.assertEqual(changed_after_send.status_code, status.HTTP_409_CONFLICT)
         token = PedidoSite.objects.get(pk=created.data['id']).token_consulta
         self.client.force_authenticate(None)
         public = self.client.get('/api/pedidos-site/consulta-orcamento/', {'token': token})
         self.assertEqual(public.status_code, status.HTTP_200_OK)
         self.assertEqual(str(public.data['orcamento_final']), '725.50')
         self.assertNotIn('email', public.data)
+
+    @override_settings(EMAIL_HOST='')
+    def test_quote_email_is_not_reported_as_sent_without_smtp(self):
+        created = self.client.post('/api/pedidos-site/', self.payload(), format='json')
+        self.client.force_authenticate(self.staff)
+        self.client.patch(f"/api/pedidos-site/{created.data['id']}/", {'status': 'aprovado'}, format='json')
+        self.client.post(f"/api/pedidos-site/{created.data['id']}/salvar-orcamento/", {'valor_final': '725.50'}, format='json')
+        response = self.client.post(f"/api/pedidos-site/{created.data['id']}/enviar-orcamento/", {}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_503_SERVICE_UNAVAILABLE)
+        self.assertIsNone(PedidoSite.objects.get(pk=created.data['id']).orcamento_enviado_em)
 
 
     def test_08_order_details_are_private(self):
