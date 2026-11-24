@@ -78,6 +78,10 @@ def seed_catalog(apps, schema_editor):
                 imagem=None,
             )
             existing.add(normalize(product_name))
+    
+    if schema_editor.connection.vendor == 'postgresql' and schema_editor.connection.in_atomic_block:
+        with schema_editor.connection.cursor() as cursor:
+            cursor.execute('SET CONSTRAINTS ALL IMMEDIATE')
 
 
 class Migration(migrations.Migration):
